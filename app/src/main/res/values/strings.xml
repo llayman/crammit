@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Crammit</string>
+    <string name="title_label">Title:</string>
+    <string name="year_label">Year:</string>
+    <string name="course_label">Course:</string>
+    <string name="description_label">Description:</string>
+</resources>

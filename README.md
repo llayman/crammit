@@ -1,0 +1,1 @@
+A simple Android application containing a RecyclerView.
