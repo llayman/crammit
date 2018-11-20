@@ -24,12 +24,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
 
     private Listener listener;
 
-
     interface Listener {
         void onClick(int position);
     }
 
-    public void setListener(Listener listener) {
+    void setListener(Listener listener) {
         this.listener = listener;
     }
 
@@ -39,10 +38,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     // you provide access to all the views for a data item in a view holder
     class MyViewHolder extends RecyclerView.ViewHolder {
         public ConstraintLayout layout;
-        public TextView courseNumberView;
-        public TextView titleView;
+        TextView courseNumberView;
+        TextView titleView;
 
-        public MyViewHolder(ConstraintLayout v) {
+        MyViewHolder(ConstraintLayout v) {
             super(v);
             layout = v;
             courseNumberView = v.findViewById(R.id.item_course);
@@ -53,13 +52,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     // Create new views (invoked by the layout manager)
     @Override
     public BookAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                  int viewType) {
+                                                       int viewType) {
         // create a new view
         ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.book_list_item, parent, false);
 
-        MyViewHolder vh = new MyViewHolder(v);
-        return vh;
+        return new MyViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -72,7 +70,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(listener != null) {
+                if (listener != null) {
                     listener.onClick(position);
                 }
             }

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 //        Copyright 2018 Lucas Layman Licensed under the
 //        Educational Community License, Version 2.0 (the "License"); you may
 //        not use this file except in compliance with the License. You may
@@ -26,17 +25,22 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@id/details"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="25" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/details"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recycler_view">
+        app:layout_constraintTop_toBottomOf="@id/recycler_view"
+        app:layout_constraintVertical_weight="75">
 
         <TextView
             android:id="@+id/title_label"
@@ -53,9 +57,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/title_label"
-            app:layout_constraintTop_toTopOf="@+id/title_label"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="@+id/title_label" />
 
         <TextView
             android:id="@+id/year_label"
@@ -90,9 +94,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/course_label"
-            app:layout_constraintTop_toTopOf="@+id/course_label"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="@+id/course_label" />
 
         <TextView
             android:id="@+id/description_label"
@@ -109,9 +113,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/description_label"
-            app:layout_constraintTop_toTopOf="@+id/description_label"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="@+id/description_label" />
 
     </android.support.constraint.ConstraintLayout>
 
