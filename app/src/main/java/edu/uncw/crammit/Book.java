@@ -14,18 +14,14 @@
 
 package edu.uncw.crammit;
 
+import io.objectbox.annotation.Entity;
+import io.objectbox.annotation.Id;
+
+@Entity
 public class Book {
 
-    static Book[] books = {
-            new Book("Elements of Computing Systems", "CSC 242", "Not really a textbook. More of a handbook.", 2012),
-            new Book("Introduction to Algorithms", "CSC 380", "The gold standard for algorithms textbooks.", 2009),
-            new Book("Head First Android Development", "CSC 315", "A book with step-by-step instructions for creating awesome apps.", 2017),
-            new Book("Plato's Symposium", "PAR 101", "Recent translation of the bedrock of Western Philosophy", 1956),
-            new Book("Hamlet (Penguin Classics)", "COM 116", "Alas, poor Yorick, I knew him well!", 1995),
-            new Book("They Say/I Say with Readings", "ENG 101", "The basics of writing styles", 2018),
-            new Book("Introduction to Psychology", "PSY 105", "Everything from neurons to nannyies. Learn how the brain works.", 2017),
-            new Book("Introducing Anthropology", "ANT 105", "Ever wonder how the process of studying people and civilizations is done? Wonder no more.", 2011)
-    };
+    @Id
+    private long id;
 
     String title;
     String courseNumber;
@@ -36,6 +32,46 @@ public class Book {
         this.title = title;
         this.courseNumber = courseNumber;
         this.description = description;
+        this.year = year;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getCourseNumber() {
+        return courseNumber;
+    }
+
+    public void setCourseNumber(String courseNumber) {
+        this.courseNumber = courseNumber;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
         this.year = year;
     }
 }

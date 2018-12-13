@@ -20,13 +20,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import io.objectbox.Box;
+
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> {
 
     private Listener listener;
+    private Box<Book> bookBox;
 
     interface Listener {
         void onClick(int position);
     }
+
+    BookAdapter(Box<Book> bookBox) {
+        this.bookBox = bookBox;
+    }
+
 
     void setListener(Listener listener) {
         this.listener = listener;
@@ -62,16 +70,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.courseNumberView.setText(Book.books[position].courseNumber);
-        holder.titleView.setText(Book.books[position].title);
+
+        Book book = bookBox.getAll().get(position);
+
+        holder.courseNumberView.setText(book.courseNumber);
+        holder.titleView.setText(book.title);
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (listener != null) {
-                    listener.onClick(position);
+                    listener.onClick(holder.getAdapterPosition());
                 }
             }
         });
@@ -80,6 +91,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return Book.books.length;
+        return (int) bookBox.count();
     }
 }

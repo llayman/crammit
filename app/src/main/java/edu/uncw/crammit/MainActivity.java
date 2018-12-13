@@ -20,18 +20,25 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import io.objectbox.Box;
+
 public class MainActivity extends Activity implements BookAdapter.Listener {
 
     RecyclerView mRecyclerView;
+
+    Box<Book> bookBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        bookBox = ((App) getApplication()).getBoxStore().boxFor(Book.class);
+
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        BookAdapter adapter = new BookAdapter();
+        BookAdapter adapter = new BookAdapter(bookBox);
         adapter.setListener(this);
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this,
@@ -40,17 +47,20 @@ public class MainActivity extends Activity implements BookAdapter.Listener {
 
     @Override
     public void onClick(int position) {
+
+        Book book = bookBox.getAll().get(position);
+
         TextView title = findViewById(R.id.title);
-        title.setText(Book.books[position].title);
+        title.setText(book.title);
 
         TextView year = findViewById(R.id.year);
-        year.setText(Integer.toString(Book.books[position].year));
+        year.setText(Integer.toString(book.year));
 
         TextView course = findViewById(R.id.course);
-        course.setText(Book.books[position].courseNumber);
+        course.setText(book.courseNumber);
 
         TextView description = findViewById(R.id.description);
-        description.setText(Book.books[position].description);
+        description.setText(book.description);
 
     }
 }
