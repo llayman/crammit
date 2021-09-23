@@ -30,12 +30,15 @@ public class MainActivity extends Activity implements BookAdapter.Listener {
         setContentView(R.layout.activity_main);
 
         mRecyclerView = findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         BookAdapter adapter = new BookAdapter();
-        adapter.setListener(this);
+
         mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL));
+
+        adapter.setListener(this);
+
     }
 
     @Override
