@@ -23,7 +23,7 @@ public class Book {
             new Book("Plato's Symposium", "PAR 101", "Recent translation of the bedrock of Western Philosophy", 1956),
             new Book("Hamlet (Penguin Classics)", "COM 116", "Alas, poor Yorick, I knew him well!", 1995),
             new Book("They Say/I Say with Readings", "ENG 101", "The basics of writing styles", 2018),
-            new Book("Introduction to Psychology", "PSY 105", "Everything from neurons to nannyies. Learn how the brain works.", 2017),
+            new Book("Introduction to Psychology", "PSY 105", "Everything from neurons to nannies. Learn how the brain works.", 2017),
             new Book("Introducing Anthropology", "ANT 105", "Ever wonder how the process of studying people and civilizations is done? Wonder no more.", 2011)
     };
 

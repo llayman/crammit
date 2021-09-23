@@ -13,6 +13,7 @@
 
 package edu.uncw.crammit;
 
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
 
     // Create new views (invoked by the layout manager)
     @Override
+    @NonNull
     public BookAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                        int viewType) {
         // create a new view
@@ -60,18 +62,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
         return new MyViewHolder(v);
     }
 
+
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.courseNumberView.setText(Book.books[position].courseNumber);
-        holder.titleView.setText(Book.books[position].title);
-        holder.layout.setOnClickListener(new View.OnClickListener() {
+        myViewHolder.courseNumberView.setText(Book.books[i].courseNumber);
+        myViewHolder.titleView.setText(Book.books[i].title);
+        myViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (listener != null) {
-                    listener.onClick(position);
+                    listener.onClick(myViewHolder.getAdapterPosition());
                 }
             }
         });
