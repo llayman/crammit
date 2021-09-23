@@ -14,7 +14,7 @@
 -->
 
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         android:text="@string/intro_label"
         />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/intro_label"
         app:layout_constraintVertical_weight="25" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/details"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -128,6 +128,6 @@
             app:layout_constraintStart_toEndOf="@+id/description_label"
             app:layout_constraintTop_toTopOf="@+id/description_label" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

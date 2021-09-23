@@ -16,7 +16,7 @@ package edu.uncw.crammit;
 
 public class Book {
 
-    static Book[] books = {
+    static final Book[] books = {
             new Book("Elements of Computing Systems", "CSC 242", "Not really a textbook. More of a handbook.", 2012),
             new Book("Introduction to Algorithms", "CSC 380", "The gold standard for algorithms textbooks.", 2009),
             new Book("Head First Android Development", "CSC 315", "A book with step-by-step instructions for creating awesome apps.", 2017),
@@ -27,10 +27,10 @@ public class Book {
             new Book("Introducing Anthropology", "ANT 105", "Ever wonder how the process of studying people and civilizations is done? Wonder no more.", 2011)
     };
 
-    String title;
-    String courseNumber;
-    String description;
-    int year;
+    final String title;
+    final String courseNumber;
+    final String description;
+    final int year;
 
     Book(String title, String courseNumber, String description, int year) {
         this.title = title;

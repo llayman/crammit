@@ -13,9 +13,9 @@
 
 package edu.uncw.crammit;
 
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +38,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     class MyViewHolder extends RecyclerView.ViewHolder {
-        public ConstraintLayout layout;
-        TextView courseNumberView;
-        TextView titleView;
+        final public ConstraintLayout layout;
+        final TextView courseNumberView;
+        final TextView titleView;
 
         MyViewHolder(ConstraintLayout v) {
             super(v);
@@ -74,7 +74,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
             @Override
             public void onClick(View view) {
                 if (listener != null) {
-                    listener.onClick(myViewHolder.getAdapterPosition());
+                    listener.onClick(myViewHolder.getAbsoluteAdapterPosition());
                 }
             }
         });
