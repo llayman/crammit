@@ -33,14 +33,14 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/bookListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scrollbars="vertical"
         android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toTopOf="@id/details"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/intro_label"
+        app:layout_constraintBottom_toTopOf="@id/details"
         app:layout_constraintVertical_weight="25" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,7 +50,7 @@
         android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recycler_view"
+        app:layout_constraintTop_toBottomOf="@id/bookListView"
         app:layout_constraintVertical_weight="75">
 
         <TextView

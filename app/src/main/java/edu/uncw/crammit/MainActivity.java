@@ -15,12 +15,10 @@ package edu.uncw.crammit;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.widget.TextView;
 
-public class MainActivity extends Activity implements BookAdapter.Listener {
+import androidx.recyclerview.widget.RecyclerView;
+
+public class MainActivity extends Activity {
 
     RecyclerView mRecyclerView;
 
@@ -29,28 +27,7 @@ public class MainActivity extends Activity implements BookAdapter.Listener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRecyclerView = findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        BookAdapter adapter = new BookAdapter();
-        adapter.setListener(this);
-        mRecyclerView.setAdapter(adapter);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this,
-                DividerItemDecoration.VERTICAL));
-    }
-
-    @Override
-    public void onClick(int position) {
-        TextView title = findViewById(R.id.title);
-        title.setText(Book.books[position].title);
-
-        TextView year = findViewById(R.id.year);
-        year.setText(Integer.toString(Book.books[position].year));
-
-        TextView course = findViewById(R.id.course);
-        course.setText(Book.books[position].courseNumber);
-
-        TextView description = findViewById(R.id.description);
-        description.setText(Book.books[position].description);
+        mRecyclerView = findViewById(R.id.bookListView);
 
     }
 }
