@@ -13,13 +13,17 @@
 
 package edu.uncw.crammit;
 
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> {
 
@@ -38,15 +42,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     class MyViewHolder extends RecyclerView.ViewHolder {
-        final public ConstraintLayout layout;
+        final public CardView layout;
         final TextView courseNumberView;
         final TextView titleView;
+        final ImageView bookImageView;
 
-        MyViewHolder(ConstraintLayout v) {
+        MyViewHolder(CardView v) {
             super(v);
             layout = v;
             courseNumberView = v.findViewById(R.id.item_course);
             titleView = v.findViewById(R.id.item_title);
+            bookImageView = v.findViewById(R.id.book_image);
         }
     }
 
@@ -56,7 +62,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     public BookAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                        int viewType) {
         // create a new view
-        ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext())
+        CardView v = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.book_list_item, parent, false);
 
         return new MyViewHolder(v);
@@ -70,6 +76,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
         // - replace the contents of the view with that element
         myViewHolder.courseNumberView.setText(Book.books[i].courseNumber);
         myViewHolder.titleView.setText(Book.books[i].title);
+
+        Drawable image = ContextCompat.getDrawable(myViewHolder.layout.getContext(), Book.books[i].imageResourceId);
+        myViewHolder.bookImageView.setImageDrawable(image);
+        myViewHolder.bookImageView.setContentDescription(Book.books[i].title);
+
         myViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
