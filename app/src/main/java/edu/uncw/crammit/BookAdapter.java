@@ -25,7 +25,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> {
+public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     private Listener listener;
 
@@ -41,13 +41,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         final public CardView layout;
         final TextView courseNumberView;
         final TextView titleView;
         final ImageView bookImageView;
 
-        MyViewHolder(CardView v) {
+        ViewHolder(CardView v) {
             super(v);
             layout = v;
             courseNumberView = v.findViewById(R.id.item_course);
@@ -59,33 +59,32 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     // Create new views (invoked by the layout manager)
     @Override
     @NonNull
-    public BookAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+    public BookAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                        int viewType) {
         // create a new view
         CardView v = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.book_list_item, parent, false);
 
-        return new MyViewHolder(v);
+        return new ViewHolder(v);
     }
 
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        myViewHolder.courseNumberView.setText(Book.books[i].courseNumber);
-        myViewHolder.titleView.setText(Book.books[i].title);
+        holder.courseNumberView.setText(Book.books[i].courseNumber);
+        holder.titleView.setText(Book.books[i].title);
 
-        Drawable image = ContextCompat.getDrawable(myViewHolder.layout.getContext(), Book.books[i].imageResourceId);
-        myViewHolder.bookImageView.setImageDrawable(image);
-        myViewHolder.bookImageView.setContentDescription(Book.books[i].title);
+        holder.bookImageView.setImageResource(Book.books[i].imageResourceId);
+        holder.bookImageView.setContentDescription(Book.books[i].title);
 
-        myViewHolder.layout.setOnClickListener(new View.OnClickListener() {
+        holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (listener != null) {
-                    listener.onClick(myViewHolder.getAbsoluteAdapterPosition());
+                    listener.onClick(holder.getAbsoluteAdapterPosition());
                 }
             }
         });
