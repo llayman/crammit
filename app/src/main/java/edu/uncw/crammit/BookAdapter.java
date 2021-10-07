@@ -25,7 +25,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
+public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> {
 
     private Listener listener;
 
@@ -41,13 +41,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         final public CardView layout;
         final TextView courseNumberView;
         final TextView titleView;
         final ImageView bookImageView;
 
-        ViewHolder(CardView v) {
+        MyViewHolder(CardView v) {
             super(v);
             layout = v;
             courseNumberView = v.findViewById(R.id.item_course);
@@ -59,19 +59,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     // Create new views (invoked by the layout manager)
     @Override
     @NonNull
-    public BookAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public BookAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                        int viewType) {
         // create a new view
         CardView v = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.book_list_item, parent, false);
 
-        return new ViewHolder(v);
+        return new MyViewHolder(v);
     }
 
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.courseNumberView.setText(Book.books[i].courseNumber);
